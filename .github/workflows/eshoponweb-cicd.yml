@@ -16,7 +16,7 @@ env:
   RESOURCE-GROUP: ivey-az400-github
   LOCATION: uksouth
   TEMPLATE-FILE: .azure/bicep/webapp.bicep
-  SUBSCRIPTION-ID: ebdcf40f-850b-442d-8751-f50b91715851
+  SUBSCRIPTION-ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   WEBAPP-NAME: ivey-az400-webapp
 
 
@@ -115,7 +115,9 @@ jobs:
     - name: Azure Login
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
     # Create resource group
     - name: Create resource group
