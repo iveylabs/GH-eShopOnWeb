@@ -11,6 +11,11 @@ on:
       
   workflow_dispatch:
 
+# For OIDC
+permissions:
+  id-token: write
+  contents: read
+
 # Environment variables
 env:
   RESOURCE-GROUP: ivey-az400-github
