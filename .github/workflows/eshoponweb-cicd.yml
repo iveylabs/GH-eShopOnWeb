@@ -9,18 +9,7 @@ on:
     paths:
       - "src/Web/**"
       
-  workflow_dispatch:
-      inputs:
-        courseName:
-          description: 'Course name'
-          required: true
-          default: 'AZ-400'
-          type: choice
-          options:
-          - AZ-400
-          - AZ-204
-          - AZ-104
-          
+  workflow_dispatch:          
 
 # For OIDC
 permissions:
