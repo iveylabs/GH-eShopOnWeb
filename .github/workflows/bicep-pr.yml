@@ -18,6 +18,7 @@ permissions:
 # Set envs
 env:
   WORKDIR: ".azure/bicep"
+  RESOURCE-GROUP: ivey-az400-github
 
 # Set defaults for GitHub Actions runner
 defaults:
@@ -55,14 +56,22 @@ jobs:
         with:
           inlineScript: az bicep build --file ${{ env.WORKDIR }}/webapp.bicep
         id: lint
-
+        
+      # Create resource group
+      - name: Create resource group
+        uses: azure/cli@v2
+        with:
+          azcliversion: 2.30.0
+          inlineScript: az group create -n ${{ env.RESOURCE-GROUP }} -l ${{ env.LOCATION }} --tags course=AZ-400
+          
       # Validate whether a template is valid at subscription scope
       - name: Bicep Validate
         uses: Azure/cli@v2.1.0
         with:
           inlineScript: |
-            az deployment sub validate \
+            az deployment group validate \
               --name ${{ github.run_id }} \
+              --resource-group ${{ env.RESOURCE-GROUP }} \
               --template-file ${{ env.WORKDIR }}/webapp.bicep \
               --location uksouth \
               --parameters resourcesPrefix=${{ steps.resources_prefix.outputs.result }}
