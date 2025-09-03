@@ -88,7 +88,7 @@ jobs:
         path: ${{env.DOTNET_ROOT}}/myapp
         
     - name: Upload artifact for deployment job
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4.6.2
       with:
         name: bicep-template
         path: ${{ env.TEMPLATE-FILE }}
@@ -105,7 +105,7 @@ jobs:
     
     # Download the publish files created in previous job
     - name: Download artifact from build job
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v5.0.0
       with:
         name: .net-app
         path: .net-app
