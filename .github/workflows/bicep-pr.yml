@@ -73,7 +73,6 @@ jobs:
               --name ${{ github.run_id }} \
               --resource-group ${{ env.RESOURCE-GROUP }} \
               --template-file ${{ env.WORKDIR }}/webapp.bicep \
-              --location uksouth \
               --parameters resourcesPrefix=${{ steps.resources_prefix.outputs.result }}
         id: validate
               
