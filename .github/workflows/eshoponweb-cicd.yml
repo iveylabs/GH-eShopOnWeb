@@ -18,11 +18,11 @@ permissions:
 
 # Environment variables
 env:
-  RESOURCE-GROUP: ivey-az400-github
+  RESOURCE-GROUP: ivey-github
   LOCATION: uksouth
   TEMPLATE-FILE: .azure/bicep/webapp.bicep
   SUBSCRIPTION-ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-  WEBAPP-NAME: ivey-az400-webapp
+  WEBAPP-NAME: ivey-webapp
 
 
 jobs:
@@ -129,7 +129,7 @@ jobs:
       uses: azure/cli@v2
       with:
         azcliversion: 2.30.0
-        inlineScript: az group create -n ${{ env.RESOURCE-GROUP }} -l ${{ env.LOCATION }} --tags course=AZ-400
+        inlineScript: az group create -n ${{ env.RESOURCE-GROUP }} -l ${{ env.LOCATION }} --tags SecurityControl=Ignore
           
     # Deploy Azure WebApp using Bicep file
     - name: deploy
