@@ -36,12 +36,15 @@ public class LogoutModel : PageModel
     {
         await _signInManager.SignOutAsync();
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-        var userId = _signInManager.Context.User.Claims.First(c => c.Type == ClaimTypes.Name);
+        var userId = _signInManager.Context.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name);
         var identityKey = _signInManager.Context.Request.Cookies[ConfigureCookieSettings.IdentifierCookieName];
-        _cache.Set($"{userId.Value}:{identityKey}", identityKey, new MemoryCacheEntryOptions
+        if (userId != null && identityKey != null)
         {
-            AbsoluteExpiration = DateTime.Now.AddMinutes(ConfigureCookieSettings.ValidityMinutesPeriod)
-        });
+            _cache.Set($"{userId.Value}:{identityKey}", identityKey, new MemoryCacheEntryOptions
+            {
+                AbsoluteExpiration = DateTime.Now.AddMinutes(ConfigureCookieSettings.ValidityMinutesPeriod)
+            });
+        }
 
         _logger.LogInformation("User logged out.");
         if (returnUrl != null)
