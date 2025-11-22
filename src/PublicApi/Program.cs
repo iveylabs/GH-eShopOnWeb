@@ -84,7 +84,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddControllers();
 
-builder.Services.AddMediatR(typeof(CatalogItem).Assembly);
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CatalogItem).Assembly));
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
 builder.Services.AddEndpointsApiExplorer();
