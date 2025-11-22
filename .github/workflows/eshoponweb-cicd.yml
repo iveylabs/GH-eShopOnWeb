@@ -18,7 +18,7 @@ permissions:
 
 # Environment variables
 env:
-  RESOURCE-GROUP: ivey-github
+  RESOURCE-GROUP: github-rg
   LOCATION: ukwest
   TEMPLATE-FILE: .azure/bicep/webapp.bicep
   SUBSCRIPTION-ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
