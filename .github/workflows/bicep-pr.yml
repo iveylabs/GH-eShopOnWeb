@@ -62,7 +62,7 @@ jobs:
         uses: azure/cli@v2
         with:
           azcliversion: 2.30.0
-          inlineScript: az group create -n ${{ env.RESOURCE-GROUP }} -l uksouth --tags course=AZ-400
+          inlineScript: az group create -n ${{ env.RESOURCE-GROUP }} -l ukwest --tags SecurityControl=Ignore
           
       # Validate whether a template is valid at subscription scope
       - name: Bicep Validate
