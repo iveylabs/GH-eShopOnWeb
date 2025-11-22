@@ -18,7 +18,7 @@ permissions:
 # Set envs
 env:
   WORKDIR: ".azure/bicep"
-  RESOURCE-GROUP: ivey-az400-github
+  RESOURCE-GROUP: github-rg
 
 # Set defaults for GitHub Actions runner
 defaults:
