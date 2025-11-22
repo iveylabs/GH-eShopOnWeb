@@ -34,6 +34,9 @@ param server string
 resource containerGroup 'Microsoft.ContainerInstance/containerGroups@2021-09-01' = {
   name: name
   location: location
+  tags: {
+    SecurityControl: 'Ignore'
+  }
   properties: {
     containers: [
       {
