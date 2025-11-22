@@ -15,14 +15,15 @@
 
   <ItemGroup>
     <PackageReference Include="Ardalis.ListStartupServices" Version="1.1.4" />
-    <PackageReference Include="Ardalis.Specification" Version="8.0.0" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
-    <PackageReference Include="MediatR" Version="12.4.1" />
+    <PackageReference Include="Ardalis.Specification" Version="6.1.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" Condition="'$(Configuration)'=='Release'" PrivateAssets="All" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Azure.AppConfiguration.AspNetCore" Version="7.3.0" />
+    <PackageReference Include="Microsoft.Azure.AppConfiguration.AspNetCore" Version="5.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.0" />
-    <PackageReference Include="Microsoft.FeatureManagement.AspNetCore" Version="3.5.0" />
+    <PackageReference Include="Microsoft.FeatureManagement.AspNetCore" Version="2.5.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.175" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.0" />
@@ -34,8 +35,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.1.2" />
-    <PackageReference Include="Azure.Identity" Version="1.12.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.22.1" />
+    <PackageReference Include="Azure.Identity" Version="1.3.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\fonts\" />
@@ -50,39 +51,6 @@
   <ItemGroup>
     <None Include="compilerconfig.json" />
     <None Include="wwwroot\images\products\1.png" />
-    <None Include="wwwroot\images\products\10.png" />
-    <None Include="wwwroot\images\products\11.png" />
-    <None Include="wwwroot\images\products\12.png" />
-    <None Include="wwwroot\images\products\2.png" />
-    <None Include="wwwroot\images\products\3.png" />
-    <None Include="wwwroot\images\products\4.png" />
-    <None Include="wwwroot\images\products\5.png" />
-    <None Include="wwwroot\images\products\6.png" />
-    <None Include="wwwroot\images\products\7.png" />
-    <None Include="wwwroot\images\products\8.png" />
-    <None Include="wwwroot\images\products\9.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Update="appsettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Views\Shared\Error.cshtml">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="Views\Shared\_Layout.cshtml">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="Views\Shared\_LoginPartial.cshtml">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="Views\Shared\_ValidationScriptsPartial.cshtml">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="Views\_ViewImports.cshtml">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="Views\_ViewStart.cshtml">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
+
 </Project>
