@@ -82,13 +82,13 @@ jobs:
       run: dotnet publish ./src/Web/Web.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
       
     - name: Upload artifact for deployment job
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v5.0.0
       with:
         name: .net-app
         path: ${{env.DOTNET_ROOT}}/myapp
         
     - name: Upload artifact for deployment job
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v5.0.0
       with:
         name: bicep-template
         path: ${{ env.TEMPLATE-FILE }}
@@ -105,14 +105,14 @@ jobs:
     
     # Download the publish files created in previous job
     - name: Download artifact from build job
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v6.0.0
       with:
         name: .net-app
         path: .net-app
   
     # Download the bicep templates from previous job
     - name: Download artifact from build job
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v6.0.0
       with:
         name: bicep-template
         path: bicep-template
