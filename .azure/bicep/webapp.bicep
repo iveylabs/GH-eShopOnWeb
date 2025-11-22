@@ -7,6 +7,9 @@ var appServicePlanName = toLower('AppServicePlan-${webAppName}')
 resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
   name: appServicePlanName
   location: location
+  tags: {
+    SecurityControl: 'Ignore'
+  }
   properties: {
     reserved: true
   }
@@ -19,6 +22,9 @@ resource appService 'Microsoft.Web/sites@2020-06-01' = {
   name: webAppName
   kind: 'app'
   location: location
+  tags: {
+    SecurityControl: 'Ignore'
+  }
   properties: {
     serverFarmId: appServicePlan.id
     siteConfig: {
