@@ -7,6 +7,9 @@ param location string = resourceGroup().location
 resource acr 'Microsoft.ContainerRegistry/registries@2021-09-01' = {
   name: 'cr${suffix}'
   location: location
+  tags: {
+    SecurityControl: 'Ignore'
+  }
   sku: {
     name: 'Basic'
   }
