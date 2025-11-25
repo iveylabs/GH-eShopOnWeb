@@ -15,8 +15,9 @@ on:
         options:
           - auto-created
           - bug
-        required: false
         description: (optional) Issue label
+        default: auto-created
+        required: false
 
 jobs:
   create-issue:
