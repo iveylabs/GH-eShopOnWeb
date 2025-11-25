@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/dotnet-architecture/eShopOnWeb/workflows/eShopOnWeb%20Build%20and%20Test/badge.svg)](https://github.com/dotnet-architecture/eShopOnWeb/actions)
+[![eShopOnWeb CI/CD](https://github.com/iveylabs/GH-eShopOnWeb/actions/workflows/eshoponweb-cicd.yml/badge.svg)](https://github.com/iveylabs/GH-eShopOnWeb/actions/workflows/eshoponweb-cicd.yml)
 
 # Microsoft eShopOnWeb ASP.NET Core Reference Application
 
