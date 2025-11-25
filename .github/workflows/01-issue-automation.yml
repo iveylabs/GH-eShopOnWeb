@@ -1,0 +1,58 @@
+name: Issue automation
+
+on:
+  issues:
+    types:
+      - labeled
+  workflow_dispatch:
+    inputs:
+      title:
+        type: string
+        required: true
+        description: Issue title
+      label:
+        type: choice
+        options:
+          - auto-created
+          - bug
+        required: false
+        description: (optional) Issue label
+
+jobs:
+  create-issue:
+    if: ${{ github.event_name }} == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create issue (without label)
+        if: ${{ !inputs.label }}
+        run: gh issue create --title "${{ env.title }}"
+        env:
+          title: ${{ inputs.title }}
+
+      - name: Create issue (with label)
+        if: ${{ inputs.label }}
+        run: gh issue create --title "${{ env.title }}" --label ${{ inputs.label }}
+        env:
+          title: ${{ inputs.title }}
+    
+  add-comment:
+    if: ${{ github.event.label.name }} == 'add-comment' && ${{ github.event_name == 'issue_labeled' }}
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+    - name: Add comment
+      run: gh issue comment $ISSUE --body "Oh look at you, adding labels! Very fancy... 😒"
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ISSUE: ${{ github.event.issue.html_url }}
+
+    - name: Add label
+      run: |
+        gh issue edit $ISSUE --add-label "i-can-do-that-too"
+        gh issue comment $ISSUE --body "Would you look at that! 😱 I too can add labels. Not so special now, are you? 😏"
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ISSUE: ${{ github.event.issue.html_url }}
