@@ -1,9 +1,13 @@
-name: Issue automation
+name: 01-Issue automation
 
+## Trigger(s)
 on:
+  # When issue is labelled
   issues:
     types:
       - labeled
+
+  # When manually triggered
   workflow_dispatch:
     inputs:
       title:
@@ -15,43 +19,50 @@ on:
         options:
           - auto-created
           - bug
+          - none
         description: (optional) Issue label
-        default: auto-created
-        required: false
+        default: none
+        required: true
 
 jobs:
+  # Create an issue only when manually triggered
   create-issue:
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
       issues: write
     steps:
+      # Don't add a label to the issue
       - name: Create issue (without label)
-        if: ${{ !inputs.label }}
+        if: inputs.label == 'none'
         run: gh issue create --repo ${{ github.repository }} --title "${{ env.title }}" --body "Created using the CLI in a workflow"
         env:
           title: ${{ inputs.title }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # Add a label to the issue
       - name: Create issue (with label)
-        if: ${{ inputs.label }}
+        if: inputs.label != 'none'
         run: gh issue create --repo ${{ github.repository }} --title "${{ env.title }}" --label ${{ inputs.label }} --body "Created using the CLI in a workflow"
         env:
           title: ${{ inputs.title }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    
+
+  # Add a comment to an issue when the 'add-comment' label is added
   add-comment:
     if: github.event.label.name == 'add-comment'
     runs-on: ubuntu-latest
     permissions:
       issues: write
     steps:
+    # Add a comment
     - name: Add comment
       run: gh issue comment $ISSUE --body "Oh look at you, adding labels! Very fancy... 😒"
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         ISSUE: ${{ github.event.issue.html_url }}
 
+    # Add the 'i-can-do-that-too' label and add a comment
     - name: Add label
       run: |
         gh issue edit $ISSUE --add-label "i-can-do-that-too"
