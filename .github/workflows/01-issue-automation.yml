@@ -22,7 +22,7 @@ on:
           - none
         description: (optional) Issue label
         default: none
-        required: true
+        required: false
 
 jobs:
   # Create an issue only when manually triggered
