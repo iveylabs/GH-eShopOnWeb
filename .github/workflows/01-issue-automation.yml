@@ -86,7 +86,7 @@ jobs:
       issues: write
     steps:
       - name: Create issue
-        run: gh issue create --repo ${{ github.repository }} --title "${{ env.title }}" --body "Created using the CLI in a workflow" --assignee ${{ github.event.client_payload.assign-to }}
+        run: gh issue create --repo ${{ github.repository }} --title "${{ github.event.client_payload.title }}" --body "Created using the CLI in a workflow" --assignee ${{ github.event.client_payload.assign-to }}
         env:
           title: ${{ inputs.title }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
