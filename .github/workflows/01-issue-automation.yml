@@ -20,7 +20,7 @@ on:
 
 jobs:
   create-issue:
-    if: ${{ github.event_name }} == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
       issues: write
@@ -40,7 +40,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
   add-comment:
-    if: ${{ github.event.label.name }} == 'add-comment'
+    if: github.event.label.name == 'add-comment'
     runs-on: ubuntu-latest
     permissions:
       issues: write
