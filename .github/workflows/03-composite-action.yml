@@ -1,0 +1,14 @@
+name: 03-Composite action
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-action:
+    name: Run the composite action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Greeting composite action
+        uses: iveylabs/hello-world-composite-action@v2
+        with:
+          who-to-greet: "GH-200 folks"
