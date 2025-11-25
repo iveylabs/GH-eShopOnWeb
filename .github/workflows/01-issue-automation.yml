@@ -30,12 +30,14 @@ jobs:
         run: gh issue create --title "${{ env.title }}"
         env:
           title: ${{ inputs.title }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create issue (with label)
         if: ${{ inputs.label }}
         run: gh issue create --title "${{ env.title }}" --label ${{ inputs.label }}
         env:
           title: ${{ inputs.title }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
   add-comment:
     if: ${{ github.event.label.name }} == 'add-comment' && ${{ github.event_name == 'issue_labeled' }}
