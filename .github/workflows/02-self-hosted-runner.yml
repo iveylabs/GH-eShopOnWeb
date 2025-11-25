@@ -1,0 +1,14 @@
+name: 02-Self-Hosted Runner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  execute-job:
+    runs-on: [self-hosted, demo]
+    steps:
+      - name: Create hello-world.txt
+        run: | 
+          echo Hello >> hello-world.txt
+          dir
+        
