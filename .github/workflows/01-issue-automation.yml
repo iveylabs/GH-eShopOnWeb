@@ -28,14 +28,14 @@ jobs:
     steps:
       - name: Create issue (without label)
         if: ${{ !inputs.label }}
-        run: gh issue create --title "${{ env.title }}" --body "Created using the CLI in a workflow"
+        run: gh issue create --repo ${{ github.repository }} --title "${{ env.title }}" --body "Created using the CLI in a workflow"
         env:
           title: ${{ inputs.title }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create issue (with label)
         if: ${{ inputs.label }}
-        run: gh issue create --title "${{ env.title }}" --label ${{ inputs.label }} --body "Created using the CLI in a workflow"
+        run: gh issue create --repo ${{ github.repository }} --title "${{ env.title }}" --label ${{ inputs.label }} --body "Created using the CLI in a workflow"
         env:
           title: ${{ inputs.title }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
