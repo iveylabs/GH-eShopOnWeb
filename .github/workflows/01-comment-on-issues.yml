@@ -1,0 +1,27 @@
+name: Add comment to issue
+
+on:
+  issues:
+    types:
+      - labeled
+
+jobs:
+  add-comment:
+    if: github.event.label.name == 'add-comment'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+    - name: Add comment
+      run: gh issue comment $ISSUE --body "Oh look at you, adding labels! Very fancy... 😒"
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ISSUE: ${{ github.event.issue.html_url }}
+
+    - name: Add label
+      run: |
+        gh issue edit $ISSUE --add-label "i-can-do-that-too"
+        gh issue comment $ISSUE --body "Would you look at that! 😱 I too can add labels. Not so special now, are you? 😏"
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ISSUE: ${{ github.event.issue.html_url }}
