@@ -80,7 +80,7 @@ jobs:
   # Create an issue only when webhook triggered
   create-issue-webhook:
     name: Create issue (webhook)
-    if: github.event_name == 'repository_dispatch' && github.event.client_payload.issue == "create"
+    if: github.event_name == 'repository_dispatch' && github.event.client_payload.issue == 'create'
     runs-on: ubuntu-latest
     permissions:
       issues: write
