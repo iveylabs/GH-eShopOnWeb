@@ -1,0 +1,12 @@
+name: 03-webhook
+
+on:
+  repository_dispatch:
+    types: [ Demo Event ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!
