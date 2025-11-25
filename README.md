@@ -1,3 +1,4 @@
+[![01-Issue automation](https://github.com/iveylabs/GH-eShopOnWeb/actions/workflows/01-issue-automation.yml/badge.svg)](https://github.com/iveylabs/GH-eShopOnWeb/actions/workflows/01-issue-automation.yml)
 [![eShopOnWeb CI/CD](https://github.com/iveylabs/GH-eShopOnWeb/actions/workflows/eshoponweb-cicd.yml/badge.svg)](https://github.com/iveylabs/GH-eShopOnWeb/actions/workflows/eshoponweb-cicd.yml)
 
 # Microsoft eShopOnWeb ASP.NET Core Reference Application
