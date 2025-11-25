@@ -24,9 +24,14 @@ on:
         default: none
         required: false
 
+  # When a POST request is made to https://api.github.com/repos/iveylabs/GH-eShopOnWeb/dispatches with the "event_type" of "demo-event"
+  repository_dispatch:
+    types: [ demo-event ]
+
 jobs:
   # Create an issue only when manually triggered
-  create-issue:
+  create-issue-manual:
+    name: Create issue (manually triggered)
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
@@ -50,6 +55,7 @@ jobs:
 
   # Add a comment to an issue when the 'add-comment' label is added
   add-comment:
+    name: Add comment
     if: github.event.label.name == 'add-comment'
     runs-on: ubuntu-latest
     permissions:
@@ -70,3 +76,17 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         ISSUE: ${{ github.event.issue.html_url }}
+
+  # Create an issue only when webhook triggered
+  create-issue-webhook:
+    name: Create issue (webhook)
+    if: github.event_name == 'repository_dispatch' && github.event.client_payload.issue == "create"
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create issue
+        run: gh issue create --repo ${{ github.repository }} --title "${{ env.title }}" --body "Created using the CLI in a workflow" --assignee ${{ github.event.client_payload.assign-to }}
+        env:
+          title: ${{ inputs.title }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
