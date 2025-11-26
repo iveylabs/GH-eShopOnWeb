@@ -9,6 +9,11 @@ on:
         required: true
         description: Target environment
 
+# For OIDC
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   job1:
     name: Job 1
