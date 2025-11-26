@@ -12,6 +12,7 @@ on:
 jobs:
   job1:
     name: Job 1
+    environment: Production
     runs-on: ubuntu-latest
     steps:
       - name: Echo environment name
