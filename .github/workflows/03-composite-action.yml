@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Greeting composite action
-        uses: iveylabs/hello-world-composite-action@main
+        uses: iveylabs/hello-world-composite-action@refs/tags/main
         with:
           who-to-greet: "GH-200 folks"
