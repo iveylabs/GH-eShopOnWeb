@@ -1,0 +1,9 @@
+name: Backlog/project item
+description: Create a new backlog item for tracking in the project.
+projects: gim-home/367
+labels: project
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill in as much detail as possible for this item
